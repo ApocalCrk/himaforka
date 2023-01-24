@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "149392387017",
+    "firebase_url": "https://himaforka-c0ad2-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "himaforka-c0ad2",
+    "storage_bucket": "himaforka-c0ad2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:149392387017:android:06f573357f93eb97a65618",
+        "android_client_info": {
+          "package_name": "com.atmajaya.himaforka"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "149392387017-i4088jafvi2tga50rlu6kjp3vnohpq48.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxpgfX_aLmIHaxM-u6hXXhNjNF_K7g41Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "149392387017-i4088jafvi2tga50rlu6kjp3vnohpq48.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
