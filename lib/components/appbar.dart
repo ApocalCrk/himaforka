@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:himaforka/screens/user/leaderboard/leaderboard_screen.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../components/theme.dart';
 import 'package:himaforka/screens/auth/login_screen.dart';
@@ -51,7 +52,7 @@ AppBar appBar(context) {
       ),
       IconButton(
         onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => const Leaderboard()));
+          Navigator.push(context, PageTransition(child: const Leaderboard(), type: PageTransitionType.fade));
         },
         icon: const Icon(
           Icons.leaderboard_outlined,
