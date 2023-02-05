@@ -1,10 +1,8 @@
-import 'dart:developer';
 import 'package:flutter/material.dart';
-import 'package:himaforka/components/theme.dart';
 import 'package:himaforka/components/appbar.dart';
 import 'package:himaforka/constants.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 class EventScreen extends StatefulWidget {
   const EventScreen({Key? key}) : super(key: key);
@@ -28,21 +26,29 @@ class _EventScreenState extends State<EventScreen> {
   }
 
   getEvents() async {
-    setState(() {
-      isLoading = true;
+    await Firebase.initializeApp();
+    FirebaseFirestore.instance
+        .collection('events')
+        .get()
+        .then((value) {
+      for (var element in value.docs) {
+        var splitTanggalEvent = element['tanggal_event'].split('-');
+        var splitTanggalPendaftaran = element['pendaftaran'].split('-');
+        ListEvent data = ListEvent(
+          nama_event: element['nama_event'],
+          detail_event: element['detail_event'],
+          lokasi_event: element['lokasi_event'],
+          tanggal_event: splitTanggalEvent[0] + ' ' + getmonth(int.parse(checkMonth(splitTanggalEvent[1]))) + ' ' + splitTanggalEvent[2],
+          pendaftaran: splitTanggalPendaftaran[0] + ' ' + getmonth(int.parse(checkMonth(splitTanggalEvent[1]))) + ' ' + splitTanggalPendaftaran[2],
+          pendaftaran_akhir: element['pendaftaran_akhir'],
+          gambar_event: element['gambar_event']
+        );
+        listEvent.add(data);
+      }
+      setState(() {
+        isLoading = false;
+      });
     });
-    var response = await http.post(Uri.http(host, 'api_himaforka/get_event.php'));
-    var data = json.decode(response.body);
-    if (data == "No Data") {
-      setState(() {
-        isLoading = false;
-      });
-    } else {
-      setState(() {
-        isLoading = false;
-        listEvent = (json.decode(response.body) as List).map((event) => ListEvent.fromJson(event, event['nama_event'], event['detail_event'], event['lokasi_event'], event['tanggal_event'], event['pendaftaran'], event['tutup_pendaftaran'], event['gambar_event'])).toList();
-      });
-    }
   }
 
   void searchData(String query) {
@@ -50,11 +56,11 @@ class _EventScreenState extends State<EventScreen> {
     dummySearchList.addAll(listEvent);
     if (query.isNotEmpty) {
       List<ListEvent> dummyListData = [];
-      dummySearchList.forEach((item) {
+      for (var item in dummySearchList) {
         if (item.nama_event.toLowerCase().contains(query.toLowerCase())) {
           dummyListData.add(item);
         }
-      });
+      }
       setState(() {
         search = true;
         searchEvent.clear();
@@ -100,7 +106,7 @@ class _EventScreenState extends State<EventScreen> {
           body: SingleChildScrollView(
             child: Column(
               children: [
-                Text(
+                const Text(
                   "Event",
                   style: TextStyle(
                       color: Color.fromARGB(255, 0, 0, 0),
@@ -158,12 +164,12 @@ class _EventScreenState extends State<EventScreen> {
                           top: defaultPadding,
                           bottom: 10),
                       padding: const EdgeInsets.all(defaultPadding),
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: Colors.white,
-                        borderRadius: const BorderRadius.all(Radius.circular(10)),
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
                         boxShadow: [
                           BoxShadow(
-                            offset: const Offset(0, 10),
+                            offset: Offset(0, 10),
                             blurRadius: 50,
                             color: Color.fromARGB(40, 83, 83, 83),
                           ),
@@ -176,7 +182,7 @@ class _EventScreenState extends State<EventScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  '${listEvent[index].nama_event}',
+                                  listEvent[index].nama_event,
                                   style: const TextStyle(
                                       fontSize: 18, fontWeight: FontWeight.w500),
                                 ),
@@ -184,7 +190,7 @@ class _EventScreenState extends State<EventScreen> {
                                   height: 10,
                                 ),
                                 Text(
-                                  '${listEvent[index].detail_event}',
+                                  listEvent[index].detail_event,
                                   style: const TextStyle(
                                       fontSize: 14, color: Colors.black54),
                                       textAlign: TextAlign.justify,
@@ -202,7 +208,7 @@ class _EventScreenState extends State<EventScreen> {
                                       width: 10,
                                     ),
                                     Text(
-                                      '${listEvent[index].tanggal_event}',
+                                      listEvent[index].tanggal_event,
                                       style: const TextStyle(
                                           fontSize: 14, color: Colors.black54),
                                     ),
@@ -221,7 +227,7 @@ class _EventScreenState extends State<EventScreen> {
                                       width: 10,
                                     ),
                                     Text(
-                                      '${listEvent[index].pendaftaran}',
+                                      listEvent[index].pendaftaran,
                                       style: const TextStyle(
                                           fontSize: 14, color: Colors.black54),
                                     ),
@@ -240,7 +246,7 @@ class _EventScreenState extends State<EventScreen> {
                                       width: 10,
                                     ),
                                     Text(
-                                      '${listEvent[index].lokasi_event}',
+                                      listEvent[index].lokasi_event,
                                       style: const TextStyle(
                                           fontSize: 14, color: Colors.black54),
                                     ),
@@ -275,12 +281,12 @@ class _EventScreenState extends State<EventScreen> {
                           top: defaultPadding,
                           bottom: 10),
                       padding: const EdgeInsets.all(defaultPadding),
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: Colors.white,
-                        borderRadius: const BorderRadius.all(Radius.circular(10)),
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
                         boxShadow: [
                           BoxShadow(
-                            offset: const Offset(0, 10),
+                            offset: Offset(0, 10),
                             blurRadius: 50,
                             color: Color.fromARGB(40, 83, 83, 83),
                           ),
@@ -293,7 +299,7 @@ class _EventScreenState extends State<EventScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  '${searchEvent[index].nama_event}',
+                                  searchEvent[index].nama_event,
                                   style: const TextStyle(
                                       fontSize: 18, fontWeight: FontWeight.w500),
                                 ),
@@ -301,7 +307,7 @@ class _EventScreenState extends State<EventScreen> {
                                   height: 10,
                                 ),
                                 Text(
-                                  '${searchEvent[index].detail_event}',
+                                  searchEvent[index].detail_event,
                                   style: const TextStyle(
                                       fontSize: 14, color: Colors.black54),
                                       textAlign: TextAlign.justify,
@@ -319,7 +325,7 @@ class _EventScreenState extends State<EventScreen> {
                                       width: 10,
                                     ),
                                     Text(
-                                      '${searchEvent[index].tanggal_event}',
+                                      searchEvent[index].tanggal_event,
                                       style: const TextStyle(
                                           fontSize: 14, color: Colors.black54),
                                     ),
@@ -338,7 +344,7 @@ class _EventScreenState extends State<EventScreen> {
                                       width: 10,
                                     ),
                                     Text(
-                                      '${searchEvent[index].pendaftaran}',
+                                      searchEvent[index].pendaftaran,
                                       style: const TextStyle(
                                           fontSize: 14, color: Colors.black54),
                                     ),
@@ -357,7 +363,7 @@ class _EventScreenState extends State<EventScreen> {
                                       width: 10,
                                     ),
                                     Text(
-                                      '${searchEvent[index].lokasi_event}',
+                                      searchEvent[index].lokasi_event,
                                       style: const TextStyle(
                                           fontSize: 14, color: Colors.black54),
                                     ),
@@ -388,21 +394,35 @@ class _EventScreenState extends State<EventScreen> {
 }
 
 class ListEvent {
+  // ignore: non_constant_identifier_names
   final String nama_event;
+  // ignore: non_constant_identifier_names
   final String detail_event;
+  // ignore: non_constant_identifier_names
   final String lokasi_event;
+  // ignore: non_constant_identifier_names
   final String tanggal_event;
+  // ignore: non_constant_identifier_names
   final String pendaftaran;
+  // ignore: non_constant_identifier_names
   final String? pendaftaran_akhir;
+  // ignore: non_constant_identifier_names
   final String? gambar_event;
 
   ListEvent(
+      // ignore: non_constant_identifier_names
       {required this.nama_event,
+      // ignore: non_constant_identifier_names
       required this.detail_event,
+      // ignore: non_constant_identifier_names
       required this.lokasi_event,
+      // ignore: non_constant_identifier_names
       required this.tanggal_event,
+      // ignore: non_constant_identifier_names
       required this.pendaftaran,
+      // ignore: non_constant_identifier_names
       required this.pendaftaran_akhir,
+      // ignore: non_constant_identifier_names
       required this.gambar_event});
 
     ListEvent.fromJson(data, this.nama_event, this.detail_event, this.lokasi_event, this.tanggal_event, this.pendaftaran, this.pendaftaran_akhir, this.gambar_event);

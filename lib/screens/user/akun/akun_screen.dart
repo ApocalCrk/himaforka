@@ -1,18 +1,12 @@
-import 'dart:developer';
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:himaforka/screens/auth/login_screen.dart';
 import 'package:himaforka/screens/user/akun/aktifitas/aktifitas_screen.dart';
-import 'package:himaforka/components/theme.dart';
 import 'package:himaforka/components/appbar.dart';
 import 'package:himaforka/screens/user/home/home_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:himaforka/constants.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'dart:convert';
-
 
 class Akun extends StatefulWidget {
   const Akun({

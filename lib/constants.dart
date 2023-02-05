@@ -32,7 +32,7 @@ String getmonth(month) {
       monthString = 'Juli';
       break;
     case 8:
-      monthString = 'Agusutus';
+      monthString = 'Agustus';
       break;
     case 9:
       monthString = 'September';
@@ -105,4 +105,14 @@ String getProdi(digit) {
       break;
   }
   return prodi;
+}
+String checkMonth(digit) {
+  if (digit.substring(0, 1) == '0') {
+    digit = digit.substring(1, 2);
+  }
+  return digit;
+}
+extension StringExtension on String {
+  String truncateTo(int maxLength) =>
+      (length <= maxLength) ? this : '${substring(0, maxLength)}...';
 }

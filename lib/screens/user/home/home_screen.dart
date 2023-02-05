@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
@@ -7,13 +5,10 @@ import 'package:himaforka/screens/user/aktifitas/activity_screen.dart';
 import 'package:himaforka/screens/user/calendar/calendar_screen.dart';
 import 'package:himaforka/screens/user/event/event_screen.dart';
 import 'package:himaforka/screens/user/leaderboard/himarewards_screen.dart';
-import 'package:himaforka/components/theme.dart';
 import 'package:himaforka/components/appbar.dart';
-import 'package:himaforka/constants.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:himaforka/screens/user/data/shared.dart';
 
 
@@ -21,7 +16,6 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp();
   await setupFlutterNotifications();
   showFlutterNotification(message);
-  print('Handling a background message ${message.messageId}');
 }
 
 late AndroidNotificationChannel channel;
@@ -158,7 +152,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       children: [
                         Expanded(
                           child: TextField(
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               hintText: "Cari",
                               hintStyle: TextStyle(
                                   color: Color.fromARGB(255, 0, 0, 0),
@@ -194,7 +188,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       Column(
                         children: [
                           Container(
-                            margin: const EdgeInsets.only(top: 30, left: 20),
+                            margin: const EdgeInsets.only(top: 30, left: 40),
                             child: Row(
                               children: [
                                 InkWell(
@@ -300,7 +294,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           ),
                           Container(
-                            margin: const EdgeInsets.only(top: 20, left: 20),
+                            margin: const EdgeInsets.only(top: 20, left: 40),
                             child: Row(
                               children: [
                                 InkWell(

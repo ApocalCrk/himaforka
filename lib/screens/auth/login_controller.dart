@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:beautiful_soup_dart/beautiful_soup.dart';
 import 'package:cookie_jar/cookie_jar.dart';
 import 'package:dio/dio.dart';
@@ -34,7 +33,7 @@ class LoginController {
       var nama = soup.find("div", attrs: {"class": "box-body box-profile"})?.find("h3")?.text;
       Map<String, dynamic> data = {
         "nama": nama,
-        "email": npm + "@students.uajy.ac.id",
+        "email": "$npm@students.uajy.ac.id",
         "npm": npm,
         "status": true,
       };

@@ -1,6 +1,4 @@
-import 'dart:developer';
 import 'package:flutter/material.dart';
-import 'package:himaforka/components/theme.dart';
 import 'package:himaforka/components/appbar.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:himaforka/constants.dart';
@@ -163,7 +161,7 @@ class _ActivityScreenState extends State<ActivityScreen> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
+                            const Text(
                               "Aktivitas",
                               style: TextStyle(
                                 color: Color.fromARGB(255, 0, 0, 0),  
@@ -174,7 +172,7 @@ class _ActivityScreenState extends State<ActivityScreen> {
                             ),
                             Text(
                               getmonth(_focusedDay.month),
-                              style: TextStyle(
+                              style: const TextStyle(
                                 color: Color.fromARGB(122, 50, 93, 143),
                                 fontSize: 15,
                                 fontFamily: "Poppins",
@@ -216,7 +214,7 @@ class _ActivityScreenState extends State<ActivityScreen> {
                                     children: [
                                       Text(
                                         '+${listActivity[index].poin}',
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           color: Color.fromARGB(255, 255, 255, 255),
                                           fontSize: 16,
                                           fontFamily: "Poppins",
@@ -232,8 +230,8 @@ class _ActivityScreenState extends State<ActivityScreen> {
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        '${listActivity[index].namaEvent}',
-                                        style: TextStyle(
+                                        listActivity[index].namaEvent,
+                                        style: const TextStyle(
                                           color: Color.fromARGB(255, 0, 0, 0),
                                           fontSize: 16,
                                           fontFamily: "Poppins",
@@ -241,8 +239,8 @@ class _ActivityScreenState extends State<ActivityScreen> {
                                         ),
                                       ),
                                       Text(
-                                        '${listActivity[index].fullDate}',
-                                        style: TextStyle(
+                                        listActivity[index].fullDate,
+                                        style: const TextStyle(
                                           color: Color.fromARGB(255, 0, 0, 0),
                                           fontSize: 13,
                                           fontFamily: "Poppins",

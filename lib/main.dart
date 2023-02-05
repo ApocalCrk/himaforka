@@ -4,15 +4,14 @@ import 'package:get/get.dart';
 import 'package:himaforka/screens/auth/login_screen.dart';
 import 'package:himaforka/constants.dart';
 import 'package:himaforka/screens/dashboard.dart';
-import 'package:himaforka/screens/user/home/home_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 const AndroidNotificationChannel channel = AndroidNotificationChannel(
-    'high_importance_channel', // id
-    'High Importance Notifications', // title// description
+    'high_importance_channel',
+    'High Importance Notifications',
     importance: Importance.high,
     playSound: true);
 
@@ -22,7 +21,6 @@ final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp();
   showFlutterNotification(message);
-  print('A bg message just showed up :  ${message.messageId}');
 }
 
 void showFlutterNotification(RemoteMessage message) {
@@ -95,8 +93,7 @@ class _MyAppState extends State<MyApp> {
           scaffoldBackgroundColor: Colors.white,
           elevatedButtonTheme: ElevatedButtonThemeData(
             style: ElevatedButton.styleFrom(
-              elevation: 0,
-              primary: kPrimaryColor,
+              elevation: 0, backgroundColor: kPrimaryColor,
               shape: const StadiumBorder(),
               maximumSize: const Size(double.infinity, 56),
               minimumSize: const Size(double.infinity, 56),

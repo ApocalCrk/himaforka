@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:himaforka/screens/dashboard.dart';
@@ -7,13 +5,7 @@ import 'package:page_transition/page_transition.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:himaforka/constants.dart';
 import 'package:himaforka/screens/auth/login_controller.dart';
-
-import 'package:himaforka/screens/user/home/home_screen.dart';
-
-import 'package:himaforka/components/auth/already_have_an_account_acheck.dart';
-import 'package:himaforka/screens/auth/signup_screen.dart';
-
-import 'package:himaforka/encryption/en_de.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
 
 class LoginForm extends StatefulWidget {
@@ -122,6 +114,8 @@ class _LoginFormState extends State<LoginForm> {
                   Map<String, dynamic> resultLogin = await LoginController().login(npm.text, password.text);
                   if(resultLogin['status'] == true){
                     savePref(resultLogin['npm'], resultLogin['nama'], resultLogin['email']);
+                    // firebase subcribe for message
+                    FirebaseMessaging.instance.subscribeToTopic('all');
                     Fluttertoast.showToast(
                       msg: "Login Berhasil",
                       toastLength: Toast.LENGTH_SHORT,

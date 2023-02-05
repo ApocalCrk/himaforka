@@ -1,7 +1,5 @@
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:himaforka/components/theme.dart';
 import 'package:himaforka/components/appbar.dart';
 import 'package:himaforka/screens/user/home/home_screen.dart';
 import 'package:himaforka/constants.dart';
@@ -59,11 +57,11 @@ class _HimarewardsScreenState extends State<HimarewardsScreen> {
     dummySearchList.addAll(allDataRewards);
     if(query.isNotEmpty) {
       List<LeaderboardList> dummyListData = [];
-      dummySearchList.forEach((item) {
+      for (var item in dummySearchList) {
         if(item.name.toLowerCase().contains(query.toLowerCase())) {
           dummyListData.add(item);
         }
-      });
+      }
       setState(() {
         search = 1;
         searchList.clear();
@@ -122,9 +120,9 @@ class _HimarewardsScreenState extends State<HimarewardsScreen> {
                         decoration: BoxDecoration(
                           color: const Color.fromRGBO(255, 255, 255, 1),
                           borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
+                          boxShadow: const [
                             BoxShadow(
-                              color: const Color.fromRGBO(0, 0, 0, 0.1),
+                              color: Color.fromRGBO(0, 0, 0, 0.1),
                               blurRadius: 10,
                               offset: Offset(0, 5),
                             ),
@@ -149,24 +147,24 @@ class _HimarewardsScreenState extends State<HimarewardsScreen> {
                                   ),
                                   Row(
                                     children: [
-                                      Image(
+                                      const Image(
                                         image: AssetImage(
                                             'assets/images/himarewards.png'),
                                         width: 30,
                                         height: 30,
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         width: 10,
                                       ),
                                       Text(
                                         check == 0 ? "0" : point.toString(),
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             color: Color.fromRGBO(0, 0, 0, 1),
                                             fontFamily: 'Poppins',
                                             fontSize: 20,
                                             fontWeight: FontWeight.w500),
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         width: 10,
                                       )
                                     ]
@@ -264,9 +262,9 @@ class _HimarewardsScreenState extends State<HimarewardsScreen> {
                             decoration: BoxDecoration(
                               color: const Color.fromRGBO(255, 255, 255, 1),
                               borderRadius: BorderRadius.circular(10),
-                              boxShadow: [
+                              boxShadow: const [
                                 BoxShadow(
-                                  color: const Color.fromRGBO(0, 0, 0, 0.1),
+                                  color: Color.fromRGBO(0, 0, 0, 0.1),
                                   blurRadius: 10,
                                   offset: Offset(0, 5),
                                 ),
@@ -282,7 +280,7 @@ class _HimarewardsScreenState extends State<HimarewardsScreen> {
                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(
-                                        '${allDataRewards[index].name}'.truncateTo(18),
+                                        allDataRewards[index].name.truncateTo(18),
                                         style: const TextStyle(
                                             color: Color.fromRGBO(0, 0, 0, 1),
                                             fontSize: 20,
@@ -291,13 +289,13 @@ class _HimarewardsScreenState extends State<HimarewardsScreen> {
                                       ),
                                       Row(
                                         children: [
-                                          Image(
+                                          const Image(
                                             image: AssetImage(
                                                 'assets/images/himarewards.png'),
                                             width: 30,
                                             height: 30,
                                           ),
-                                          SizedBox(
+                                          const SizedBox(
                                             width: 10,
                                           ),
                                           Text(
@@ -308,7 +306,7 @@ class _HimarewardsScreenState extends State<HimarewardsScreen> {
                                                 fontSize: 20,
                                                 fontWeight: FontWeight.w500),
                                           ),
-                                          SizedBox(
+                                          const SizedBox(
                                             width: 10,
                                           )
                                         ]
@@ -355,9 +353,9 @@ class _HimarewardsScreenState extends State<HimarewardsScreen> {
                             decoration: BoxDecoration(
                               color: const Color.fromRGBO(255, 255, 255, 1),
                               borderRadius: BorderRadius.circular(10),
-                              boxShadow: [
+                              boxShadow: const [
                                 BoxShadow(
-                                  color: const Color.fromRGBO(0, 0, 0, 0.1),
+                                  color: Color.fromRGBO(0, 0, 0, 0.1),
                                   blurRadius: 10,
                                   offset: Offset(0, 5),
                                 ),
@@ -373,7 +371,7 @@ class _HimarewardsScreenState extends State<HimarewardsScreen> {
                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(
-                                        '${searchList[index].name}'.truncateTo(18),
+                                        searchList[index].name.truncateTo(18),
                                         style: const TextStyle(
                                             color: Color.fromRGBO(0, 0, 0, 1),
                                             fontSize: 20,
@@ -382,13 +380,13 @@ class _HimarewardsScreenState extends State<HimarewardsScreen> {
                                       ),
                                       Row(
                                         children: [
-                                          Image(
+                                          const Image(
                                             image: AssetImage(
                                                 'assets/images/himarewards.png'),
                                             width: 30,
                                             height: 30,
                                           ),
-                                          SizedBox(
+                                          const SizedBox(
                                             width: 10,
                                           ),
                                           Text(
@@ -399,7 +397,7 @@ class _HimarewardsScreenState extends State<HimarewardsScreen> {
                                                 fontSize: 20,
                                                 fontWeight: FontWeight.w500),
                                           ),
-                                          SizedBox(
+                                          const SizedBox(
                                             width: 10,
                                           )
                                         ]
@@ -441,9 +439,9 @@ class _HimarewardsScreenState extends State<HimarewardsScreen> {
                         decoration: BoxDecoration(
                           color: const Color.fromRGBO(255, 255, 255, 1),
                           borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
+                          boxShadow: const [
                             BoxShadow(
-                              color: const Color.fromRGBO(0, 0, 0, 0.1),
+                              color: Color.fromRGBO(0, 0, 0, 0.1),
                               blurRadius: 10,
                               offset: Offset(0, 5),
                             ),
@@ -455,10 +453,10 @@ class _HimarewardsScreenState extends State<HimarewardsScreen> {
                               padding: const EdgeInsets.only(
                                   left: 20, right: 20, top: 5, bottom: 5),
                               child:
-                                Center(child: 
+                                const Center(child: 
                                 Text(
                                   'Tidak ada data',
-                                  style: const TextStyle(
+                                  style: TextStyle(
                                       color: Color.fromRGBO(0, 0, 0, 1),
                                       fontSize: 20,
                                       fontFamily: 'Poppins',
@@ -495,9 +493,4 @@ class LeaderboardList {
   });
   
   LeaderboardList.fromJson(data, this.rank, this.name, this.score, this.npm);
-}
-
-extension StringExtension on String {
-  String truncateTo(int maxLength) =>
-      (length <= maxLength) ? this : '${substring(0, maxLength)}...';
 }

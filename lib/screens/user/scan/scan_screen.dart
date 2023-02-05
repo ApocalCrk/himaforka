@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -18,6 +17,7 @@ class QrScanScreen extends StatefulWidget {
 
 class _QrScanScreenState extends State<QrScanScreen> {
 
+  // ignore: non_constant_identifier_names
   String data_link = "";
 
   void scanQrCode() {
@@ -44,6 +44,7 @@ class _QrScanScreenState extends State<QrScanScreen> {
         "nama": preferences.getString("nama").toString(),
         "email": preferences.getString("email").toString(),
       });
+      // ignore: non_constant_identifier_names
       var data_output = json.decode(response.body);
       if(data_output == "success"){
         Fluttertoast.showToast(
@@ -55,7 +56,8 @@ class _QrScanScreenState extends State<QrScanScreen> {
             textColor: Colors.white,
             fontSize: 16.0,
         );
-        Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
+        // ignore: use_build_context_synchronously
+        Navigator.push(context, MaterialPageRoute(builder: (context) => const HomeScreen()));
       } else if(data_output == "already exist"){
         Fluttertoast.showToast(
             msg: "Sudah Melakukan Absensi",
@@ -66,7 +68,8 @@ class _QrScanScreenState extends State<QrScanScreen> {
             textColor: Colors.white,
             fontSize: 16.0
         );
-        Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
+        // ignore: use_build_context_synchronously
+        Navigator.push(context, MaterialPageRoute(builder: (context) => const HomeScreen()));
       }else if(data_output == "time not match"){
         Fluttertoast.showToast(
             msg: "Gagal Melakukan Absensi",
@@ -87,7 +90,8 @@ class _QrScanScreenState extends State<QrScanScreen> {
             textColor: Colors.white,
             fontSize: 16.0
         );
-        Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
+        // ignore: use_build_context_synchronously
+        Navigator.push(context, MaterialPageRoute(builder: (context) => const HomeScreen()));
       }
     }else{
       Fluttertoast.showToast(
@@ -99,7 +103,8 @@ class _QrScanScreenState extends State<QrScanScreen> {
           textColor: Colors.white,
           fontSize: 16.0
       );
-        Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
+        // ignore: use_build_context_synchronously
+        Navigator.push(context, MaterialPageRoute(builder: (context) => const HomeScreen()));
     }
   }
 

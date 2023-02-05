@@ -1,10 +1,7 @@
-import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:himaforka/screens/user/scan/scan_screen.dart';
 import 'package:himaforka/screens/user/akun/akun_screen.dart';
 import 'package:himaforka/screens/user/home/home_screen.dart';
-import 'package:himaforka/components/theme.dart';
-import 'dart:convert';
 import 'package:himaforka/constants.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 

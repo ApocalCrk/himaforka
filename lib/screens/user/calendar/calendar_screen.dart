@@ -1,11 +1,9 @@
-import 'dart:developer';
 import 'package:flutter/material.dart';
-import 'package:himaforka/components/theme.dart';
 import 'package:himaforka/components/appbar.dart';
 import 'package:himaforka/constants.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 
 class CalendarScreen extends StatefulWidget {
@@ -35,10 +33,30 @@ class _CalendarScreenState extends State<CalendarScreen> {
     setState(() {
       isLoading = true;
     });
-    var response = await http.get(Uri.http(host, '/api/kalender_akademik'));
+    await Firebase.initializeApp();
+    FirebaseFirestore.instance
+        .collection('kalender')
+        .get()
+        .then((QuerySnapshot querySnapshot) {
+      for (var doc in querySnapshot.docs) {
+        var tanggalMulai = doc['tanggal_mulai'].split('-');
+        var tanggalSelesai = doc['tanggal_selesai'].split('-');
+        
+        listKalenderAkademik.add(KalenderAkademik(
+            tanggal_mulai: tanggalMulai[0],
+            bulan_mulai: checkMonth(tanggalMulai[1]),
+            tahun_mulai: tanggalMulai[2],
+            tanggal_selesai: tanggalSelesai[0],
+            bulan_selesai: checkMonth(tanggalSelesai[1]),
+            tahun_selesai: tanggalSelesai[2],
+            nama_kegiatan: doc['nama_kegiatan'],
+            detail_kegiatan: doc['detail_kegiatan'],
+            )
+          );
+      }
+    });
     setState(() {
       isLoading = false;
-      listKalenderAkademik = (json.decode(response.body) as List).map((kalender) => KalenderAkademik.fromJson(kalender, kalender['tanggal_mulai'], kalender['bulan_mulai'], kalender['tahun_mulai'], kalender['tanggal_selesai'], kalender['bulan_selesai'], kalender['tahun_selesai'], kalender['nama_kegiatan'], kalender['detail_kegiatan'])).toList();
     });
   }
 
@@ -156,7 +174,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
+                            const Text(
                               "Kalender Akademik",
                               style: TextStyle(
                                 color: Color.fromARGB(255, 0, 0, 0),  
@@ -167,7 +185,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                             ),
                             Text(
                               getmonth(_focusedDay.month),
-                              style: TextStyle(
+                              style: const TextStyle(
                                 color: Color.fromARGB(122, 50, 93, 143),
                                 fontSize: 15,
                                 fontFamily: "Poppins",
@@ -208,8 +226,8 @@ class _CalendarScreenState extends State<CalendarScreen> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Text(
-                                        '${listKalenderAkademik[index].tanggal_mulai}',
-                                        style: TextStyle(
+                                        listKalenderAkademik[index].tanggal_mulai,
+                                        style: const TextStyle(
                                           color: Color.fromARGB(255, 255, 255, 255),
                                           fontSize: 16,
                                           fontFamily: "Poppins",
@@ -225,8 +243,8 @@ class _CalendarScreenState extends State<CalendarScreen> {
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        '${listKalenderAkademik[index].nama_kegiatan}',
-                                        style: TextStyle(
+                                        listKalenderAkademik[index].nama_kegiatan,
+                                        style: const TextStyle(
                                           color: Color.fromARGB(255, 0, 0, 0),
                                           fontSize: 16,
                                           fontFamily: "Poppins",
@@ -235,7 +253,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                                       ),
                                       Text(
                                         listKalenderAkademik[index].detail_kegiatan == null ? 'Tidak Ada Keterangan' : '${listKalenderAkademik[index].detail_kegiatan}',
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           color: Color.fromARGB(255, 0, 0, 0),
                                           fontSize: 13,
                                           fontFamily: "Poppins",
@@ -264,23 +282,39 @@ class _CalendarScreenState extends State<CalendarScreen> {
 }
 
 class KalenderAkademik {
+  // ignore: non_constant_identifier_names
   final String tanggal_mulai;
+  // ignore: non_constant_identifier_names
   final String bulan_mulai;
+  // ignore: non_constant_identifier_names
   final String tahun_mulai;
+  // ignore: non_constant_identifier_names
   final String? tanggal_selesai;
+  // ignore: non_constant_identifier_names
   final String? bulan_selesai;
+  // ignore: non_constant_identifier_names
   final String? tahun_selesai;
+  // ignore: non_constant_identifier_names
   final String nama_kegiatan;
+  // ignore: non_constant_identifier_names
   final String? detail_kegiatan;
 
   KalenderAkademik({
+    // ignore: non_constant_identifier_names
     required this.tanggal_mulai,
+    // ignore: non_constant_identifier_names
     required this.bulan_mulai,
+    // ignore: non_constant_identifier_names
     required this.tahun_mulai,
+    // ignore: non_constant_identifier_names
     required this.tanggal_selesai,
+    // ignore: non_constant_identifier_names
     required this.bulan_selesai,
+    // ignore: non_constant_identifier_names
     required this.tahun_selesai,
+    // ignore: non_constant_identifier_names
     required this.nama_kegiatan,
+    // ignore: non_constant_identifier_names
     required this.detail_kegiatan,
   });
 

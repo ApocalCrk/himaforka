@@ -1,7 +1,5 @@
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:himaforka/components/theme.dart';
 import 'package:himaforka/components/appbar.dart';
 import 'package:himaforka/constants.dart';
 import 'package:http/http.dart' as http;
@@ -257,9 +255,4 @@ class LeaderboardList {
   });
   
   LeaderboardList.fromJson(data, this.rank, this.name, this.score);
-}
-
-extension StringExtension on String {
-  String truncateTo(int maxLength) =>
-      (length <= maxLength) ? this : '${substring(0, maxLength)}...';
 }

@@ -1,6 +1,6 @@
 import 'package:encrypt/encrypt.dart';
 
-class en_de {
+class EncrypDecryp {
   static final key = Key.fromUtf8('1d5f39f4737c9a8f9850d7a0306ef563');
   static final iv = IV.fromLength(16);
 

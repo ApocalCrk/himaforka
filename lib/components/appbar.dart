@@ -7,7 +7,6 @@ import '../components/theme.dart';
 import 'package:himaforka/screens/auth/login_screen.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'dart:developer';
 import 'package:himaforka/constants.dart';
 
 getStatus() async {

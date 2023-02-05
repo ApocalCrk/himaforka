@@ -1,9 +1,4 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:page_transition/page_transition.dart';
-import 'package:himaforka/components/theme.dart';
 import 'package:himaforka/components/appbar.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:himaforka/constants.dart';
@@ -101,8 +96,8 @@ class _AktifitasScreenState extends State<AktifitasScreen> {
                       Row(
                         children: [
                           Container(
-                            margin: EdgeInsets.only(top: 20, left: 20),
-                            child: Text(
+                            margin: const EdgeInsets.only(top: 20, left: 20),
+                            child: const Text(
                               'Bulan Ini',
                               style: TextStyle(
                                 color: Colors.black,
@@ -115,25 +110,25 @@ class _AktifitasScreenState extends State<AktifitasScreen> {
                         ],
                       ),
                       Container(
-                        margin: EdgeInsets.only(top: 10, left: 20, right: 20),
-                        padding: EdgeInsets.only(top: 20, bottom: 10),
+                        margin: const EdgeInsets.only(top: 10, left: 20, right: 20),
+                        padding: const EdgeInsets.only(top: 20, bottom: 10),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10),
                         boxShadow: [
                           BoxShadow(
-                            color: Color.fromARGB(62, 158, 158, 158).withOpacity(0.5),
+                            color: const Color.fromARGB(62, 158, 158, 158).withOpacity(0.5),
                             spreadRadius: 1,
                             blurRadius: 7,
-                            offset: Offset(0, 3), // changes position of shadow
+                            offset: const Offset(0, 3), // changes position of shadow
                           ),
                         ],
                       ),
                       child: 
-                      (aktifitasDay.length == 0) ?
+                      (aktifitasDay.isEmpty) ?
                       Container(
-                        margin: EdgeInsets.only(top: 10, bottom: 20),
-                        child: Center(
+                        margin: const EdgeInsets.only(top: 10, bottom: 20),
+                        child: const Center(
                           child: Text(
                             'Tidak ada aktifitas bulan lalu',
                             style: TextStyle(
@@ -147,11 +142,11 @@ class _AktifitasScreenState extends State<AktifitasScreen> {
                       ) :
                       ListView.builder(
                         shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
+                        physics: const NeverScrollableScrollPhysics(),
                         itemCount: aktifitasDay.length,
                         itemBuilder: (context, index) {
                           return Container(
-                          margin: EdgeInsets.only(left: 20, right: 20, bottom: 20),
+                          margin: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
                           child: Row(
                             children: [
                               Container(
@@ -162,14 +157,14 @@ class _AktifitasScreenState extends State<AktifitasScreen> {
                                   borderRadius: BorderRadius.circular(10),
                                   boxShadow: [
                                     BoxShadow(
-                                      color: Color.fromARGB(62, 158, 158, 158).withOpacity(0.5),
+                                      color: const Color.fromARGB(62, 158, 158, 158).withOpacity(0.5),
                                       spreadRadius: 1,
                                       blurRadius: 7,
-                                      offset: Offset(0, 3), // changes position of shadow
+                                      offset: const Offset(0, 3), // changes position of shadow
                                     ),
                                   ],
                                 ),
-                                child: Center(
+                                child: const Center(
                                   child: Icon(
                                     Icons.qr_code_scanner,
                                     color: Color.fromARGB(255, 67, 88, 94),
@@ -178,13 +173,13 @@ class _AktifitasScreenState extends State<AktifitasScreen> {
                                 ),
                               ),
                               Container(
-                                margin: EdgeInsets.only(left: 20),
+                                margin: const EdgeInsets.only(left: 20),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
                                       aktifitasDay[index].name,
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         color: Colors.black,
                                         fontSize: 20,
                                         fontFamily: 'Poppins',
@@ -193,7 +188,7 @@ class _AktifitasScreenState extends State<AktifitasScreen> {
                                     ),
                                     Text(
                                       aktifitasDay[index].time,
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         color: Colors.black,
                                         fontSize: 12,
                                         fontFamily: 'Poppins',
@@ -216,8 +211,8 @@ class _AktifitasScreenState extends State<AktifitasScreen> {
                       Row(
                         children: [
                           Container(
-                            margin: EdgeInsets.only(top: 20, left: 20,),
-                            child: Text(
+                            margin: const EdgeInsets.only(top: 20, left: 20,),
+                            child: const Text(
                               'Bulan Lalu',
                               style: TextStyle(
                                 color: Colors.black,
@@ -230,24 +225,24 @@ class _AktifitasScreenState extends State<AktifitasScreen> {
                         ],
                       ),
                       Container(
-                        margin: EdgeInsets.only(top: 10, left: 20, right: 20, bottom: 20),
-                        padding: EdgeInsets.only(top: 20, bottom: 10),
+                        margin: const EdgeInsets.only(top: 10, left: 20, right: 20, bottom: 20),
+                        padding: const EdgeInsets.only(top: 20, bottom: 10),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10),
                         boxShadow: [
                           BoxShadow(
-                            color: Color.fromARGB(62, 158, 158, 158).withOpacity(0.5),
+                            color: const Color.fromARGB(62, 158, 158, 158).withOpacity(0.5),
                             spreadRadius: 1,
                             blurRadius: 7,
-                            offset: Offset(0, 3), // changes position of shadow
+                            offset: const Offset(0, 3), // changes position of shadow
                           ),
                         ],
                       ),
-                      child: (aktifitasMonth.length == 0) ? 
+                      child: (aktifitasMonth.isEmpty) ? 
                       Container(
-                        margin: EdgeInsets.only(top: 10, bottom: 20),
-                        child: Center(
+                        margin: const EdgeInsets.only(top: 10, bottom: 20),
+                        child: const Center(
                           child: Text(
                             'Tidak ada aktifitas bulan lalu',
                             style: TextStyle(
@@ -261,11 +256,11 @@ class _AktifitasScreenState extends State<AktifitasScreen> {
                       ) :
                       ListView.builder(
                         shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
+                        physics: const NeverScrollableScrollPhysics(),
                         itemCount: aktifitasMonth.length,
                         itemBuilder: (context, index) {
                           return Container(
-                          margin: EdgeInsets.only(left: 20, right: 20, bottom: 20),
+                          margin: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
                           child: Row(
                             children: [
                               Container(
@@ -276,14 +271,14 @@ class _AktifitasScreenState extends State<AktifitasScreen> {
                                   borderRadius: BorderRadius.circular(10),
                                   boxShadow: [
                                     BoxShadow(
-                                      color: Color.fromARGB(62, 158, 158, 158).withOpacity(0.5),
+                                      color: const Color.fromARGB(62, 158, 158, 158).withOpacity(0.5),
                                       spreadRadius: 1,
                                       blurRadius: 7,
-                                      offset: Offset(0, 3), // changes position of shadow
+                                      offset: const Offset(0, 3), // changes position of shadow
                                     ),
                                   ],
                                 ),
-                                child: Center(
+                                child: const Center(
                                   child: Icon(
                                     Icons.qr_code_scanner,
                                     color: Color.fromARGB(255, 67, 88, 94),
@@ -292,10 +287,10 @@ class _AktifitasScreenState extends State<AktifitasScreen> {
                                 ),
                               ),
                               Container(
-                                margin: EdgeInsets.only(left: 20),
+                                margin: const EdgeInsets.only(left: 20),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
+                                  children: const [
                                     Text(
                                       'Membuat QR Code',
                                       style: TextStyle(

@@ -1,6 +1,3 @@
-import 'dart:developer';
-
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:page_transition/page_transition.dart';
@@ -112,7 +109,7 @@ class _SignUpFormState extends State<SignUpForm> {
               cursorColor: kPrimaryColor,
               decoration: InputDecoration(
                 hintText: "Password",
-                prefixIcon: Padding(
+                prefixIcon: const Padding(
                   padding: EdgeInsets.all(defaultPadding),
                   child: Icon(Icons.lock),
                 ),
@@ -134,7 +131,7 @@ class _SignUpFormState extends State<SignUpForm> {
                       'name': name.text,
                       'npm': npm.text,
                       'email': email.text,
-                      'password': en_de.encrypt(password.text),
+                      'password': EncrypDecryp.encrypt(password.text),
                       'status': 'active',
                       'created_at': DateTime.now().toString(),
                       'updated_at': DateTime.now().toString(),
