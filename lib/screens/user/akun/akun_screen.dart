@@ -42,7 +42,7 @@ class _AkunState extends State<Akun> {
                       width: 100.0,
                       height: 100.0,
                       margin: const EdgeInsets.only(
-                          top: 50.0, left: 20.0, right: 20.0, bottom: 30.0
+                          top: 10.0, left: 20.0, right: 20.0, bottom: 30.0
                       ),
                       clipBehavior: Clip.antiAlias,
                       decoration: const BoxDecoration(
@@ -61,42 +61,36 @@ class _AkunState extends State<Akun> {
                       ),
                     ),
                     Flexible(child:
-                    Container(
-                      margin: const EdgeInsets.only(
-                          top: 30.0
-                      ),
-                      child: 
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            data['nama'],
-                            style: const TextStyle(
-                                fontFamily: 'Poppins',
-                                color: Colors.black,
-                                fontSize: 24,
-                                fontWeight: FontWeight.w700),
-                          ),
-                          Text(
-                            getProdi(data['npm']),
-                            style: const TextStyle(
-                                fontFamily: 'Poppins',
-                                color: Colors.black,
-                                fontSize: 15,
-                                fontWeight: FontWeight.w400),
-                          ),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                        ],
-                      ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          data['nama'],
+                          style: const TextStyle(
+                              fontFamily: 'Poppins',
+                              color: Colors.black,
+                              fontSize: 24,
+                              fontWeight: FontWeight.w700),
+                        ),
+                        Text(
+                          getProdi(data['npm']),
+                          style: const TextStyle(
+                              fontFamily: 'Poppins',
+                              color: Colors.black,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w400),
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                      ],
                     ),
                     ),
                   ]
                 ),
                 Container(
                   margin: const EdgeInsets.only(
-                      top: 20.0, left: 20.0, right: 20.0,
+                     left: 20.0, right: 20.0,
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -271,25 +265,6 @@ class _AkunState extends State<Akun> {
                 ),
                 ],
                 ),
-                Container(
-                  margin: const EdgeInsets.only(
-                      top: 20.0, left: 20.0, right: 20.0,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: const [
-                      Text(
-                        'Fitur Lainnya',
-                        style: TextStyle(
-                            fontFamily: 'Poppins',
-                            color: Color.fromARGB(175, 119, 119, 119),
-                            fontSize: 15,
-                            fontWeight: FontWeight.w500),
-                      ),
-                    ],
-                  )
-                ),
-                
               ],
             ),
           ),

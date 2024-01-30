@@ -14,24 +14,24 @@ getStatus() async {
   var data = json.decode(response.body);
   if(data == "online"){
     return Fluttertoast.showToast(
-                msg: "Website Kuliah Sedang Online",
-                toastLength: Toast.LENGTH_LONG,
-                gravity: ToastGravity.TOP,
-                timeInSecForIosWeb: 1,
-                backgroundColor: Colors.green,
-                textColor: Colors.white,
-                fontSize: 14.0,
-            );
+        msg: "Website Kuliah Sedang Online",
+        toastLength: Toast.LENGTH_LONG,
+        gravity: ToastGravity.TOP,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.green,
+        textColor: Colors.white,
+        fontSize: 14.0,
+    );
   }else{
     return Fluttertoast.showToast(
-                msg: "Website Kuliah Sedang Offline",
-                toastLength: Toast.LENGTH_LONG,
-                gravity: ToastGravity.TOP,
-                timeInSecForIosWeb: 1,
-                backgroundColor: Colors.red,
-                textColor: Colors.white,
-                fontSize: 14.0
-            );
+        msg: "Website Kuliah Sedang Offline",
+        toastLength: Toast.LENGTH_LONG,
+        gravity: ToastGravity.TOP,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 14.0
+    );
   }
 }
 
@@ -40,6 +40,13 @@ AppBar appBar(context) {
     iconTheme: const IconThemeData(color: colorAccent),
     backgroundColor: Colors.transparent,
     elevation: 0,
+    title: const Text(
+      "HIMAFORKA",
+      style: TextStyle(
+        color: colorAccent,
+        fontWeight: FontWeight.bold,
+      ),
+    ),
     actions: [
       IconButton(
         onPressed: () {

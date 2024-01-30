@@ -146,50 +146,13 @@ class _HomeScreenState extends State<HomeScreen> {
                       ]
                     ),
                   ),
-                  Container(
-                    margin: const EdgeInsets.only(top: 30, left: 20, right: 20),
+                  Padding(
+                    padding: EdgeInsets.only(top: 20, left: 20),
                     child: Row(
                       children: [
-                        Expanded(
-                          child: TextField(
-                            decoration: const InputDecoration(
-                              hintText: "Cari",
-                              hintStyle: TextStyle(
-                                  color: Color.fromARGB(255, 0, 0, 0),
-                                  fontSize: 16,
-                                  fontFamily: "Poppins",
-                                  fontWeight: FontWeight.w300),
-                              fillColor: Color.fromARGB(255, 255, 255, 255),
-                              filled: true,
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.all(Radius.circular(10)),
-                                borderSide: BorderSide.none,
-                              ),
-                              contentPadding: EdgeInsets.only(left: 20, top: 16, bottom: 16),
-                            ),
-                            onChanged: (value) {
-                              //search
-                            },
-                          ),
-                        ),
-                        Container(
-                          margin: const EdgeInsets.only(left: 10),
-                          child: const Icon(
-                            Icons.search,
-                            color: Color.fromARGB(255, 47, 117, 196),
-                            size: 30,
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  Row(
-                    children: [
-                      Column(
-                        children: [
-                          Container(
-                            margin: const EdgeInsets.only(top: 30, left: 40),
-                            child: Row(
+                        Column(
+                          children: [
+                            Row(
                               children: [
                                 InkWell(
                                   onTap: () {
@@ -202,7 +165,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     );
                                   },
                                   child: Container(
-                                    width: 160,
+                                    width: MediaQuery.of(context).size.width * 0.42,
                                     height: 160,
                                     decoration: const BoxDecoration(
                                       color: Color.fromARGB(255, 255, 255, 255),
@@ -251,8 +214,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                   );
                                 },
                                 child: Container(
-                                  margin: const EdgeInsets.only(left: 20),
-                                  width: 160,
+                                  margin: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.042),
+                                  width: MediaQuery.of(context).size.width * 0.42,
                                   height: 160,
                                   decoration: const BoxDecoration(
                                     color: Color.fromARGB(255, 255, 255, 255),
@@ -292,10 +255,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 )
                               ],
                             ),
-                          ),
-                          Container(
-                            margin: const EdgeInsets.only(top: 20, left: 40),
-                            child: Row(
+                            const SizedBox(height: 20),
+                            Row(
                               children: [
                                 InkWell(
                                   onTap: () {
@@ -308,7 +269,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     );
                                   },
                                   child: Container(
-                                    width: 160,
+                                    width: MediaQuery.of(context).size.width * 0.42,
                                     height: 160,
                                     decoration: const BoxDecoration(
                                       color: Color.fromARGB(255, 255, 255, 255),
@@ -357,8 +318,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                     );
                                   },
                                   child: Container(
-                                    margin: const EdgeInsets.only(left: 20),
-                                    width: 160,
+                                    margin: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.042),
+                                    width: MediaQuery.of(context).size.width * 0.42,
                                     height: 160,
                                     decoration: const BoxDecoration(
                                       color: Color.fromARGB(255, 255, 255, 255),
@@ -398,10 +359,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                 )
                               ],
                             ),
-                          ),
-                        ],
-                      ),
-                    ]
+                          ],
+                        ),
+                      ]
+                    ),
                   )
                   
                 ],
